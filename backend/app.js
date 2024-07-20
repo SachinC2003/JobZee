@@ -14,7 +14,7 @@ config({ path: "./.env" });
 
 app.use(
   cors({
-    origin:'*',
+    origin:'https://job-zee-client-six.vercel.app',
     method: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
