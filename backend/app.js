@@ -14,8 +14,8 @@ config({ path: "./.env" });
 
 app.use(
   cors({
-    origin:'*',
-    method: ["GET", "POST", "DELETE", "PUT"],
+    origin: 'http://localhost:5173', // Replace with your frontend origin
+    methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
 );

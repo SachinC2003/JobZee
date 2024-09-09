@@ -16,7 +16,7 @@ const PostJob = () => {
   const [salaryType, setSalaryType] = useState("default");
 
   const { isAuthorized, user } = useContext(Context);
-
+  const navigateTo = useNavigate();
   const handleJobPost = async (e) => {
     e.preventDefault();
     if (salaryType === "Fixed Salary") {
@@ -61,15 +61,15 @@ const PostJob = () => {
       )
       .then((res) => {
         toast.success(res.data.message);
+        navigateTo("/job/me");
       })
       .catch((err) => {
         toast.error(err.response.data.message);
       });
   };
 
-  const navigateTo = useNavigate();
   if (!isAuthorized || (user && user.role !== "Employer")) {
-    navigateTo("/");
+    navigateTo("/job/me");
   }
 
   return (

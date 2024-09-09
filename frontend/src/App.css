@@ -828,6 +828,20 @@ p {
   font-size: 20px;
   font-weight: 500;
 }
+.job_seeker_card .btn_aprove {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.job_seeker_card .btn_aprove button {
+  background: green;
+  color: #fff;
+  border: none;
+  padding: 10px 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
 @media (max-width: 1520px) {
   .my_applications .container {
     min-width: 100%;

@@ -186,6 +186,11 @@ const EmployerCard = ({ element, openModal }) => {
             onClick={() => openModal(element.resume.url)}
           />
         </div>
+        <div className="btn_aprove">
+          <button>
+            Aprove
+          </button>
+        </div>
       </div>
     </>
   );

@@ -25,6 +25,7 @@ const Application = () => {
   console.log(id)
   const handleApplication = async (e) => {
     e.preventDefault();
+    
     const formData = new FormData();
     formData.append("name", name);
     formData.append("email", email);
@@ -33,11 +34,11 @@ const Application = () => {
     formData.append("coverLetter", coverLetter);
     formData.append("resume", resume);
     formData.append("jobId", id);
-
+  
     try {
+      // Make the POST request with the formData
       const { data } = await axios.post(
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/application/post",
-        console.log(data),
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/application/post`,
         formData,
         {
           withCredentials: true,
@@ -46,19 +47,28 @@ const Application = () => {
           },
         }
       );
+  
+      // Clear form fields after successful submission
       setName("");
       setEmail("");
       setCoverLetter("");
       setPhone("");
       setAddress("");
       setResume("");
+  
+      // Show success message and navigate
       toast.success(data.message);
       navigateTo("/job/getall");
     } catch (error) {
-      toast.error(error.response.data.message);
+      // Show error message if something goes wrong
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("An unexpected error occurred.");
+      }
     }
   };
-
+  
   if (!isAuthorized || (user && user.role === "Employer")) {
     navigateTo("/");
   }
